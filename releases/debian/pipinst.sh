@@ -4,12 +4,12 @@ dry=false
 apt=false
 pipinst_help=false
 args=()
-version="1.0.0"
+version="1.0.1"
 
 for arg in "$@"; do
     case "$arg" in
         --dry-run) dry=true; continue ;;
-        --try|--apt|--system) apt=true; continue ;;  # alle Varianten unterstützen
+        --try|--apt|--system) apt=true; continue ;; 
         --pihelp) pipinst_help=true; continue ;;
         *) args+=("$arg") ;;
     esac
@@ -52,7 +52,7 @@ if $apt; then
     fi
 else
     echo "Install via pip / Python:"
-    echo "    ➤ Found package in pip / Python: ${args[*]}"
+    echo "    ➤ Found package in PyPI / Python pip: ${args[*]}"
     if $dry; then
         echo "[Dry Run] → would start command: pip install --break-system-packages ${args[*]}"
     else
